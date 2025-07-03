@@ -108,7 +108,7 @@ const getStatusBadge = (status: string, statusText: string) => {
 }
 
 export default function InternshipsPage() {
-  const [showFilters, setShowFilters] = useState(false)
+  const [showFilters, setShowFilters] = useState(true)
   const [stipendRange, setStipendRange] = useState([15000, 50000])
   const [experienceRange, setExperienceRange] = useState([0, 2])
   const [selectedInternship, setSelectedInternship] = useState<any>(null)
@@ -417,18 +417,7 @@ export default function InternshipsPage() {
                   Applied ({statusCounts.total})
                 </Button>
               </Link>
-              
-              {/* Filters Button - Mobile */}
-              <Button 
-                onClick={() => setShowFilters(!showFilters)}
-                variant="outline"
-                size="sm"
-                className="flex-1 border-primary-navy text-primary-navy hover:bg-primary-navy hover:text-white rounded-lg font-subheading text-xs h-8"
-              >
-                <Filter className="h-3 w-3 mr-1" />
-                Filters
-              </Button>
-                    </div>
+            </div>
           </div>
 
           {/* My Applications - Desktop Only */}
@@ -468,179 +457,167 @@ export default function InternshipsPage() {
           </div>
 
           {/* Advanced Filters */}
-          <div className={`${showFilters ? 'block' : 'hidden lg:block'}`}>
+          <div className="block">
             <Card className="border-slate-200 shadow-sm">
               <CardHeader className="pb-4">
-                <CardTitle className="text-lg lg:text-xl font-heading text-primary-navy flex items-center justify-between">
-                  <span className="flex items-center">
-                    <Filter className="h-5 w-5 mr-2" />
-                    Advanced Filters
-                  </span>
-                  <Button 
-                    variant="ghost" 
-                    size="sm"
-                    onClick={() => setShowFilters(!showFilters)}
-                    className="text-[#0056B3] hover:text-primary-navy hover:bg-primary-navy/5 rounded-lg lg:block hidden font-subheading"
-                  >
-                    {showFilters ? 'Hide' : 'Show'}
-                  </Button>
+                <CardTitle className="text-lg lg:text-xl font-heading text-primary-navy flex items-center">
+                  <Filter className="h-5 w-5 mr-2" />
+                  Advanced Filters
                 </CardTitle>
               </CardHeader>
-              {showFilters && (
-                <CardContent className="space-y-6">
-                  {/* Internship Type */}
-                  <div>
-                    <h4 className="font-subheading-semibold text-primary-navy mb-3">Internship Type</h4>
-                    <div className="space-y-2">
-                      <div className="flex items-center space-x-2">
-                        <Checkbox id="summer" />
-                        <label htmlFor="summer" className="text-sm font-body text-slate-600">Summer Internship</label>
+              <CardContent className="space-y-6">
+                {/* Internship Type */}
+                <div>
+                  <h4 className="font-subheading-semibold text-primary-navy mb-3">Internship Type</h4>
+                  <div className="space-y-2">
+                    <div className="flex items-center space-x-2">
+                      <Checkbox id="summer" />
+                      <label htmlFor="summer" className="text-sm font-body text-slate-600">Summer Internship</label>
+                  </div>
+                    <div className="flex items-center space-x-2">
+                      <Checkbox id="winter" />
+                      <label htmlFor="winter" className="text-sm font-body text-slate-600">Winter Internship</label>
                     </div>
-                      <div className="flex items-center space-x-2">
-                        <Checkbox id="winter" />
-                        <label htmlFor="winter" className="text-sm font-body text-slate-600">Winter Internship</label>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <Checkbox id="part-time" />
-                        <label htmlFor="part-time" className="text-sm font-body text-slate-600">Part-time</label>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <Checkbox id="virtual" />
-                        <label htmlFor="virtual" className="text-sm font-body text-slate-600">Virtual Internship</label>
-                      </div>
+                    <div className="flex items-center space-x-2">
+                      <Checkbox id="part-time" />
+                      <label htmlFor="part-time" className="text-sm font-body text-slate-600">Part-time</label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <Checkbox id="virtual" />
+                      <label htmlFor="virtual" className="text-sm font-body text-slate-600">Virtual Internship</label>
                     </div>
                   </div>
+                </div>
 
-                  <Separator />
+                <Separator />
 
-                  {/* Year of Study */}
-                  <div>
-                    <h4 className="font-subheading-semibold text-primary-navy mb-3">Year of Study</h4>
-                    <div className="space-y-2">
-                      <div className="flex items-center space-x-2">
-                        <Checkbox id="first-year" />
-                        <label htmlFor="first-year" className="text-sm font-body text-slate-600">1st Year</label>
+                {/* Year of Study */}
+                <div>
+                  <h4 className="font-subheading-semibold text-primary-navy mb-3">Year of Study</h4>
+                  <div className="space-y-2">
+                    <div className="flex items-center space-x-2">
+                      <Checkbox id="first-year" />
+                      <label htmlFor="first-year" className="text-sm font-body text-slate-600">1st Year</label>
+                  </div>
+                    <div className="flex items-center space-x-2">
+                      <Checkbox id="second-year" />
+                      <label htmlFor="second-year" className="text-sm font-body text-slate-600">2nd Year</label>
                     </div>
-                      <div className="flex items-center space-x-2">
-                        <Checkbox id="second-year" />
-                        <label htmlFor="second-year" className="text-sm font-body text-slate-600">2nd Year</label>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <Checkbox id="third-year" />
-                        <label htmlFor="third-year" className="text-sm font-body text-slate-600">3rd Year</label>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <Checkbox id="final-year" />
-                        <label htmlFor="final-year" className="text-sm font-body text-slate-600">Final Year</label>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <Checkbox id="graduate" />
-                        <label htmlFor="graduate" className="text-sm font-body text-slate-600">Graduate Student</label>
-                      </div>
+                    <div className="flex items-center space-x-2">
+                      <Checkbox id="third-year" />
+                      <label htmlFor="third-year" className="text-sm font-body text-slate-600">3rd Year</label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <Checkbox id="final-year" />
+                      <label htmlFor="final-year" className="text-sm font-body text-slate-600">Final Year</label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <Checkbox id="graduate" />
+                      <label htmlFor="graduate" className="text-sm font-body text-slate-600">Graduate Student</label>
                     </div>
                   </div>
+                </div>
 
-                  <Separator />
+                <Separator />
 
-                  {/* Stipend Range */}
-                  <div>
-                    <h4 className="font-subheading-semibold text-primary-navy mb-3">Stipend Range</h4>
-                    <div className="px-2">
-                      <Slider
-                        value={stipendRange}
-                        onValueChange={setStipendRange}
-                        max={50000}
-                        min={10000}
-                        step={2000}
-                        className="mb-3"
-                      />
-                      <div className="flex justify-between text-sm font-body text-slate-500">
-                        <span>₹{stipendRange[0].toLocaleString()}</span>
-                        <span>₹{stipendRange[1].toLocaleString()}</span>
+                {/* Stipend Range */}
+                <div>
+                  <h4 className="font-subheading-semibold text-primary-navy mb-3">Stipend Range</h4>
+                  <div className="px-2">
+                    <Slider
+                      value={stipendRange}
+                      onValueChange={setStipendRange}
+                      max={50000}
+                      min={10000}
+                      step={2000}
+                      className="mb-3"
+                    />
+                    <div className="flex justify-between text-sm font-body text-slate-500">
+                      <span>₹{stipendRange[0].toLocaleString()}</span>
+                      <span>₹{stipendRange[1].toLocaleString()}</span>
+                  </div>
+                  </div>
+                </div>
+
+                <Separator />
+
+                {/* Work Mode */}
+                <div>
+                  <h4 className="font-subheading-semibold text-primary-navy mb-3">Work Mode</h4>
+                  <div className="space-y-2">
+                    <div className="flex items-center space-x-2">
+                      <Checkbox id="remote" />
+                      <label htmlFor="remote" className="text-sm font-body text-slate-600">Remote</label>
+                  </div>
+                    <div className="flex items-center space-x-2">
+                      <Checkbox id="hybrid" />
+                      <label htmlFor="hybrid" className="text-sm font-body text-slate-600">Hybrid</label>
                     </div>
+                    <div className="flex items-center space-x-2">
+                      <Checkbox id="on-site" />
+                      <label htmlFor="on-site" className="text-sm font-body text-slate-600">On-site</label>
                     </div>
                   </div>
+                </div>
 
-                  <Separator />
+                <Separator />
 
-                  {/* Work Mode */}
-                  <div>
-                    <h4 className="font-subheading-semibold text-primary-navy mb-3">Work Mode</h4>
-                    <div className="space-y-2">
-                      <div className="flex items-center space-x-2">
-                        <Checkbox id="remote" />
-                        <label htmlFor="remote" className="text-sm font-body text-slate-600">Remote</label>
+                {/* Field of Study */}
+                <div>
+                  <h4 className="font-subheading-semibold text-primary-navy mb-3">Field of Study</h4>
+                  <div className="space-y-2">
+                    <div className="flex items-center space-x-2">
+                      <Checkbox id="computer-science" />
+                      <label htmlFor="computer-science" className="text-sm font-body text-slate-600">Computer Science</label>
+                  </div>
+                    <div className="flex items-center space-x-2">
+                      <Checkbox id="business" />
+                      <label htmlFor="business" className="text-sm font-body text-slate-600">Business</label>
                     </div>
-                      <div className="flex items-center space-x-2">
-                        <Checkbox id="hybrid" />
-                        <label htmlFor="hybrid" className="text-sm font-body text-slate-600">Hybrid</label>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <Checkbox id="on-site" />
-                        <label htmlFor="on-site" className="text-sm font-body text-slate-600">On-site</label>
-                      </div>
+                    <div className="flex items-center space-x-2">
+                      <Checkbox id="marketing" />
+                      <label htmlFor="marketing" className="text-sm font-body text-slate-600">Marketing</label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <Checkbox id="design" />
+                      <label htmlFor="design" className="text-sm font-body text-slate-600">Design</label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <Checkbox id="engineering" />
+                      <label htmlFor="engineering" className="text-sm font-body text-slate-600">Engineering</label>
                     </div>
                   </div>
+                </div>
 
-                  <Separator />
+                <Separator />
 
-                  {/* Field of Study */}
-                  <div>
-                    <h4 className="font-subheading-semibold text-primary-navy mb-3">Field of Study</h4>
-                    <div className="space-y-2">
-                      <div className="flex items-center space-x-2">
-                        <Checkbox id="computer-science" />
-                        <label htmlFor="computer-science" className="text-sm font-body text-slate-600">Computer Science</label>
+                {/* Duration */}
+                <div>
+                  <h4 className="font-subheading-semibold text-primary-navy mb-3">Duration</h4>
+                  <div className="space-y-2">
+                    <div className="flex items-center space-x-2">
+                      <Checkbox id="6-weeks" />
+                      <label htmlFor="6-weeks" className="text-sm font-body text-slate-600">6 weeks</label>
+                  </div>
+                    <div className="flex items-center space-x-2">
+                      <Checkbox id="8-weeks" />
+                      <label htmlFor="8-weeks" className="text-sm font-body text-slate-600">8 weeks</label>
                     </div>
-                      <div className="flex items-center space-x-2">
-                        <Checkbox id="business" />
-                        <label htmlFor="business" className="text-sm font-body text-slate-600">Business</label>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <Checkbox id="marketing" />
-                        <label htmlFor="marketing" className="text-sm font-body text-slate-600">Marketing</label>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <Checkbox id="design" />
-                        <label htmlFor="design" className="text-sm font-body text-slate-600">Design</label>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <Checkbox id="engineering" />
-                        <label htmlFor="engineering" className="text-sm font-body text-slate-600">Engineering</label>
-                      </div>
+                    <div className="flex items-center space-x-2">
+                      <Checkbox id="10-weeks" />
+                      <label htmlFor="10-weeks" className="text-sm font-body text-slate-600">10 weeks</label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <Checkbox id="12-weeks" />
+                      <label htmlFor="12-weeks" className="text-sm font-body text-slate-600">12 weeks</label>
                     </div>
                   </div>
+                </div>
 
-                  <Separator />
-
-                  {/* Duration */}
-                  <div>
-                    <h4 className="font-subheading-semibold text-primary-navy mb-3">Duration</h4>
-                    <div className="space-y-2">
-                      <div className="flex items-center space-x-2">
-                        <Checkbox id="6-weeks" />
-                        <label htmlFor="6-weeks" className="text-sm font-body text-slate-600">6 weeks</label>
-                    </div>
-                      <div className="flex items-center space-x-2">
-                        <Checkbox id="8-weeks" />
-                        <label htmlFor="8-weeks" className="text-sm font-body text-slate-600">8 weeks</label>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <Checkbox id="10-weeks" />
-                        <label htmlFor="10-weeks" className="text-sm font-body text-slate-600">10 weeks</label>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <Checkbox id="12-weeks" />
-                        <label htmlFor="12-weeks" className="text-sm font-body text-slate-600">12 weeks</label>
-                      </div>
-                    </div>
-                  </div>
-
-                  <Button className="w-full bg-primary-navy hover:bg-primary-navy/90 text-white rounded-lg font-subheading">
-                    Apply Filters
-                  </Button>
-                </CardContent>
-              )}
+                <Button className="w-full bg-primary-navy hover:bg-primary-navy/90 text-white rounded-lg font-subheading">
+                  Apply Filters
+                </Button>
+              </CardContent>
             </Card>
                     </div>
         </div>
